@@ -6,9 +6,17 @@ provider:
   runtime: nodejs14.x
 
 functions:
-  hello:
-    handler: handler.hello
+  map:
+    handler: ./src/handler.map
     events:
       - httpApi:
-          path: /
+          path: /map
           method: get
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    reloadHandler: true
